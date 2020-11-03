@@ -53,7 +53,6 @@ public class CustomerServiceImpl implements CustomerService<Customer> {
             boolean isMale = resultSet.getBoolean("isMale");
             Customer customer = new Customer(id,name,address,age,isMale);
             customerList.add(customer);
-//            connection.close();
         }
       return customerList;
     }
@@ -68,7 +67,7 @@ public class CustomerServiceImpl implements CustomerService<Customer> {
         preparedStatement.setBoolean(4,object.isMale());
         int addedRow = preparedStatement.executeUpdate();
         System.out.println("The number of added row: "+ addedRow);
-//        connection.close();
+        connection.close();
     }
 
     @Override
@@ -82,7 +81,7 @@ public class CustomerServiceImpl implements CustomerService<Customer> {
         preparedStatement.setInt(5, updateId);
         int updatedRow =preparedStatement.executeUpdate();
         System.out.println("The number of updated row: "+ updatedRow);
-//        connection.close();
+        connection.close();
     }
 
     @Override
@@ -92,6 +91,6 @@ public class CustomerServiceImpl implements CustomerService<Customer> {
         preparedStatement.setInt(1,id);
         int deletedRow =preparedStatement.executeUpdate();
         System.out.println("The number of deleted row: "+ deletedRow);
-//        connection.close();
+        connection.close();
     }
 }
